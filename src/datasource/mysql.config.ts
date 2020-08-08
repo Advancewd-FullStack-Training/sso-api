@@ -1,12 +1,16 @@
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { config } from '../config';
+import * as _ from 'lodash';
 
-export const mysqlConfig: TypeOrmModuleOptions = {
-  type: "mysql",
-  host: "localhost",
-  port: 3306,
-  username: "root",
-  password: "hackagon",
-  database: "binance",
-  entities: [__dirname + "/../graph/entities/*.entity.{js,ts}"],
-  synchronize: true
-}
+const { type, host, username, password, database, port } = config;
+
+export const mysqlOrmConfig: TypeOrmModuleOptions = {
+  type: 'mysql',
+  host,
+  port,
+  username,
+  password,
+  database,
+  entities: [__dirname + '/../entities/*.entity.{js,ts}'],
+  synchronize: true,
+};
