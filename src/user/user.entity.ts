@@ -1,5 +1,7 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 import { Exclude } from "class-transformer";
+import { UserScopeEntity } from '../user-scope/user-scope.entity';
+import { UserClientEntity } from '../user-client/user-client.entity';
 
 @Entity({ name: "user" })
 export class UserEntity extends BaseEntity {
@@ -30,4 +32,15 @@ export class UserEntity extends BaseEntity {
 
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
+
+  // RELATIONs
+  @OneToMany(type => UserClientEntity, e => e.userId, {
+    cascade: true
+  })
+  userClients: UserClientEntity[]
+
+  @OneToMany(type => UserScopeEntity, e => e.userId, {
+    cascade: true
+  })
+  userScopes: UserScopeEntity[]
 }

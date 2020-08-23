@@ -1,31 +1,26 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
-import { OauthScopeEntity } from '../oauth-scope/oauth-scope.entity';
+import { UserClientEntity } from '../user-client/user-client.entity';
 
-@Entity({ name: "oauth_service" })
-export class OauthServiceEntity extends BaseEntity {
+@Entity({ name: "oauth_client" })
+export class OauthClientEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @Column({
-    unique: true
-  })
+  @Column({ unique: true })
   url: string;
-
-  @Column()
-  description: string = "";
 
   @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 
   @UpdateDateColumn({ name: "updated_at" })
-  updatedAt: Date
+  updatedAt: Date;
 
   // relations
-  @OneToMany(type => OauthScopeEntity, e => e.oauthServiceId, {
+  @OneToMany(type => UserClientEntity, e => e.oauthClientId, {
     cascade: true
   })
-  oauthScopes: OauthScopeEntity[]
+  userClients: UserClientEntity[]
 }
