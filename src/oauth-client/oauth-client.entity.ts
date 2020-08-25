@@ -3,8 +3,8 @@ import { UserClientEntity } from '../user-client/user-client.entity';
 
 @Entity({ name: "oauth_client" })
 export class OauthClientEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   name: string;

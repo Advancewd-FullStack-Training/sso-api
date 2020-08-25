@@ -17,13 +17,24 @@ export class OauthServiceService {
       command: "get-services",
       description: "Get all services",
     }, this.getServices, cli)
+
+    this.consoleService.createCommand({
+      command: "create-service <name> <url>",
+      description: "Get all services",
+    }, this._createService, cli)
   }
 
   getServices = async () => {
-    return await this.oauthServiceRepo.find();
+    const services = await this.oauthServiceRepo.find();
+    console.log(services)
+    return services;
   }
 
   async createService(data: CreateOauthServiceDTO): Promise<OauthServiceEntity> {
     return await this.oauthServiceRepo.create(data).save();
+  }
+
+  _createService = async (name: string, url: string): Promise<OauthServiceEntity> => {
+    return await this.createService({ name, url });
   }
 }

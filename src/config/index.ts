@@ -1,6 +1,6 @@
 import * as path from "path";
 
-const envPath = path.join(__dirname, `../../.env.${process.env.NODE_ENV}`)
+const envPath = path.join(__dirname, `../../.env.${process.env.NODE_ENV || "local"}`)
 
 require("dotenv").config({ path: envPath })
 

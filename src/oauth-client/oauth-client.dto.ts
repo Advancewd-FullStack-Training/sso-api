@@ -1,11 +1,9 @@
 import { IsNotEmpty } from "class-validator";
 
-export class CreateOauthServiceDTO {
+export class CreateOauthClientDTO {
   @IsNotEmpty()
   name: string;
 
   @IsNotEmpty()
   url: string;
-
-  description?: string;
 }

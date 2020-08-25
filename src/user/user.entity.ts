@@ -5,8 +5,8 @@ import { UserClientEntity } from '../user-client/user-client.entity';
 
 @Entity({ name: "user" })
 export class UserEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   email: string;

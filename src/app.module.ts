@@ -7,12 +7,14 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { OauthServiceModule } from './oauth-service/oauth-service.module';
 import { ConsoleModule } from 'nestjs-console';
+import { OauthClientModule } from './oauth-client/oauth-client.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(mysqlOrmConfig),
     UserModule, AuthModule,
     OauthServiceModule,
+    OauthClientModule,
     ConsoleModule
   ],
   controllers: [AppController],
