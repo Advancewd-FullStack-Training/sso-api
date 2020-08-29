@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { OauthServiceModule } from './oauth-service/oauth-service.module';
 import { ConsoleModule } from 'nestjs-console';
 import { OauthClientModule } from './oauth-client/oauth-client.module';
+import { OauthScopeModule } from './oauth-scope/oauth-scope.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { OauthClientModule } from './oauth-client/oauth-client.module';
     UserModule, AuthModule,
     OauthServiceModule,
     OauthClientModule,
-    ConsoleModule
+    ConsoleModule,
+    OauthScopeModule
   ],
   controllers: [AppController],
   providers: [AppService],

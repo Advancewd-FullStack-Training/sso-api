@@ -4,7 +4,7 @@ import { OauthClientEntity } from '../oauth-client/oauth-client.entity';
 
 @Entity({ name: "user_client" })
 export class UserClientEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @ManyToOne(type => UserEntity, e => e.userClients, {

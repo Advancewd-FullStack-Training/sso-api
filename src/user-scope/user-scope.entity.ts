@@ -4,7 +4,7 @@ import { OauthScopeEntity } from '../oauth-scope/oauth-scope.entity';
 
 @Entity({ name: "user_scope" })
 export class UserScopeEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @ManyToOne(type => UserEntity, e => e.userScopes, {

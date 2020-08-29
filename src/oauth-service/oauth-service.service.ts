@@ -20,7 +20,7 @@ export class OauthServiceService {
 
     this.consoleService.createCommand({
       command: "create-service <name> <url>",
-      description: "Get all services",
+      description: "Create service",
     }, this._createService, cli)
   }
 

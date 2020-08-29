@@ -1,4 +1,4 @@
-import { Controller, Post, UseGuards, Request, Get } from "@nestjs/common";
+import { Controller, Post, UseGuards, Request, Get, Body, Query } from "@nestjs/common";
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -12,8 +12,8 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post("/login")
-  async login(@Request() req: any) {
-    return this.authService.login(req.user)
+  async login(@Request() req: any, @Body("clientId") clientId: string) {
+    return this.authService.login(req.user, clientId)
   }
 
   @UseGuards(AuthGuard('facebook-token'))
@@ -26,5 +26,10 @@ export class AuthController {
   @Get("/me")
   async getMe(@Request() req) {
     return req.user
+  }
+
+  @Post("/verify")
+  async verifyToken(@Query("token") token: string) {
+    return await this.authService.verifyToken(token);
   }
 }

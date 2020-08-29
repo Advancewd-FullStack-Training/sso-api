@@ -3,7 +3,7 @@ import { OauthScopeEntity } from '../oauth-scope/oauth-scope.entity';
 
 @Entity({ name: "oauth_service" })
 export class OauthServiceEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
